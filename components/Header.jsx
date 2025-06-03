@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import logo from "../assets/logo.png";
+import kimayaLogo from "../assets/Website_Logo_Kimaya.png";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,13 +18,25 @@ export default function Header() {
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo on far left */}
-          <div className="flex-shrink-0">
+          <div className="flex items-center space-x-2">
             <Link href="/">
               <Image
                 src={logo}
                 alt="Logo"
                 width={120}
                 height={40}
+                className="object-contain hover:opacity-80 transition-opacity duration-300"
+              />
+            </Link>
+
+            <div className="w-px h-8 bg-gray-300" />
+
+            <Link href="/">
+              <Image
+                src={kimayaLogo}
+                alt="Second Logo"
+                width={130}
+                height={50}
                 className="object-contain hover:opacity-80 transition-opacity duration-300"
               />
             </Link>
@@ -85,7 +98,7 @@ export default function Header() {
           <div className="hidden lg:flex">
             <Link href="#schedule">
               <button
-                className="text-black px-5 py-2 rounded-full  bg-[#A8BE04] hover:text-white cursor-pointer hover:shadow-md transition-all"
+                className="text-white px-5 py-2 rounded-full  bg-[#A8BE04] hover:text-white cursor-pointer hover:shadow-md transition-all"
                 onClick={openPopup}
               >
                 Schedule a Visit

@@ -4,9 +4,42 @@ import React from "react";
 import bannerImg from "../assets/Kimaya_Greens_Hero_Image.jpg";
 
 export default function HeroSection() {
-  const openPopup = () => {
-    window.dispatchEvent(new Event("openPopup")); // Dispatch event to open popup
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = {
+      name: form[0].value,
+      phone: form[1].value,
+      email: form[2].value,
+      message: form[3].value,
+    };
+
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbwFUrsuEzkLUjc07z9MXmKwKSb1zGNo8gCJrmNLI0mCqkhopIjdHYqzvT2zcTKMpqL7Xg/exec",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const result = await response.json();
+      if (result.result === "success") {
+        alert("Thanks! We’ll get back to you soon.");
+        form.reset();
+      } else {
+        alert("Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      alert("Failed to send. Please check your internet.");
+      console.error("Form error:", error);
+    }
   };
+
   return (
     <section
       id="home"
@@ -35,12 +68,11 @@ export default function HeroSection() {
         </div>
 
         {/* Right Form */}
-        {/* <div className="md:w-2/5 bg-white p-6 rounded-lg shadow-lg text-gray-800 w-full max-w-md"> */}
         <div className="md:w-2/5 backdrop-blur-xs bg-[#e2e2e2] p-6 rounded-lg shadow-lg text-gray-800 w-full max-w-md">
           <h3 className="text-2xl font-bold mb-4 text-center">
             Book Your Best Deal Now!
           </h3>
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="text"
               placeholder="Enter Your Name"
@@ -66,7 +98,6 @@ export default function HeroSection() {
             ></textarea>
             <button
               type="submit"
-              onClick={openPopup}
               className="w-full bg-[#A8BE04] text-white py-2 px-4 rounded-md cursor-pointer hover:bg-[#94a503] transition duration-300"
             >
               Submit

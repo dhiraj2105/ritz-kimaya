@@ -2,6 +2,7 @@ import AboutSection from "@/sections/AboutSection";
 import AmenitiesSection from "@/sections/AmenitiesSection";
 import BuilderSection from "@/sections/BuilderSection";
 import ClosingStatementSection from "@/sections/ClosingStatementSection";
+import ContactFormSection from "@/sections/ContactFormSection";
 import FloorPlanSection from "@/sections/FloorPlanSection";
 import GallerySection from "@/sections/GallerySection";
 import HeroSection from "@/sections/HeroSection";
@@ -23,6 +24,7 @@ const Home = () => {
       <GallerySection />
       <LocationSection />
       <ClosingStatementSection />
+      <ContactFormSection />
     </div>
   );
 };
