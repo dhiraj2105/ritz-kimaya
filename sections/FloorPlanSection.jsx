@@ -74,12 +74,12 @@ export default function FloorPlanSection() {
                 <p className="text-gray-500 text-[15px] mb-4">{plan.desc}</p>
 
                 {/* Individual Button */}
-                <button
+                {/* <button
                   className="mt-2 bg-[#A8BE04] text-white text-sm font-medium px-5 py-2 rounded hover:bg-[#94a503] transition duration-300"
                   onClick={openPopup}
                 >
                   View {plan.title}
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

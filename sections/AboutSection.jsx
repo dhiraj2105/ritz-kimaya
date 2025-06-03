@@ -9,7 +9,7 @@ export default function AboutSection() {
   };
   return (
     <section className="py-20 bg-white" id="about">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-[82rem] mx-auto px-6">
         {/* Subtitle + Title */}
         <div className="text-center mb-12">
           <p className="text-xl md:text-2xl text-gray-600 mb-2">
@@ -54,18 +54,11 @@ export default function AboutSection() {
           </div>
 
           {/* Right Image */}
-          {/* <div className="lg:w-1/2 w-full">
-            <img
-              src={aboutImg.src}
-              alt="About Sikka Kimaya"
-              className="w-full h-auto rounded-xl shadow-md"
-            />
-          </div> */}
           <div className="lg:w-1/2 w-full">
             <img
               src={aboutImg.src}
               alt="About Sikka Kimaya"
-              className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover rounded-xl shadow-md"
+              className="w-full h-auto rounded-xl shadow-md"
             />
           </div>
         </div>
