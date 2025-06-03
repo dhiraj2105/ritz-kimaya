@@ -1,3 +1,4 @@
+import TopArrow from "@/components/TopArrow";
 import AboutSection from "@/sections/AboutSection";
 import AmenitiesSection from "@/sections/AmenitiesSection";
 import BuilderSection from "@/sections/BuilderSection";
@@ -24,6 +25,7 @@ const Home = () => {
       <GallerySection />
       <LocationSection />
       <ClosingStatementSection />
+      <TopArrow />
       <ContactFormSection />
     </div>
   );
