@@ -145,13 +145,10 @@ export default function ContactForm() {
 
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbxXYHVrKdNZvk3gdTwOWBuZyGjqiMViuhAR-P3-Zivm2-VwIbTCSnXizJnPzo1tquOx0A/exec", // Google Apps Script URL
+        "https://script.google.com/macros/s/AKfycbwFUrsuEzkLUjc07z9MXmKwKSb1zGNo8gCJrmNLI0mCqkhopIjdHYqzvT2zcTKMpqL7Xg/exec", // Google Apps Script URL
         {
           method: "POST",
           body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-          },
         }
       );
 
