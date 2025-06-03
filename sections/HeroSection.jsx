@@ -9,6 +9,7 @@ export default function HeroSection() {
   };
   return (
     <section
+      id="home"
       className="min-h-screen pt-16 bg-cover bg-center relative"
       style={{
         backgroundImage: `url(${bannerImg.src})`,

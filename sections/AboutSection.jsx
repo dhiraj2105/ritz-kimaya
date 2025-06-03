@@ -8,7 +8,7 @@ export default function AboutSection() {
     window.dispatchEvent(new Event("openPopup")); // Dispatch event to open popup
   };
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white" id="about">
       <div className="max-w-7xl mx-auto px-6">
         {/* Subtitle + Title */}
         <div className="text-center mb-12">

@@ -63,11 +63,11 @@ export default function Header() {
           {/* Desktop navigation */}
           <nav className="hidden md:flex flex-1 justify-center space-x-6 text-gray-700 font-medium">
             {[
+              { href: "#home", label: "Home" },
               { href: "#about", label: "About" },
-              { href: "#projects", label: "Projects" },
+              { href: "#floorPlan", label: "Floor Plans" },
               { href: "#amenities", label: "Amenities" },
               { href: "#location", label: "Location" },
-              { href: "#contact", label: "Contact" },
             ].map(({ href, label }) => (
               <div key={href} className="relative group">
                 <Link

@@ -13,7 +13,7 @@ const locationPoints = [
 
 export default function LocationSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white" id="location">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">

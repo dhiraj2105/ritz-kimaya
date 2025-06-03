@@ -37,7 +37,7 @@ export default function FloorPlanSection() {
     window.dispatchEvent(new Event("openPopup")); // Dispatch event to open popup
   };
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white" id="floorPlan">
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Subtitle & Title */}
         <p className="text-xl md:text-2xl text-gray-600 mb-2">

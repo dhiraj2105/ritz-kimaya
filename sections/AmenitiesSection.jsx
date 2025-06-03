@@ -15,51 +15,70 @@ import multiPurposeImg from "../assets/multi-purpose.webp";
 
 const amenities = [
   {
-    title: "Premium Architecture",
+    title: "Infinity Swimming Pool",
     description:
-      "Designed by Broadway Malyan, focusing on natural light, ventilation, and sustainability.",
-    image: gymImg,
-  },
-  {
-    title: "Low Density Living",
-    description:
-      "Only 9 towers on 4.5 acres with 65% open green spaces, ensuring privacy and tranquility.",
-    image: kidsPlayImg,
-  },
-  {
-    title: "Ready to Move",
-    description: "Possession available now — move in without delays.",
-    image: indoorGamesImg,
-  },
-  {
-    title: "Modern Amenities",
-    description:
-      "Clubhouse, swimming pool, gym, yoga center, children’s play area, jogging tracks, and terrace gardens.",
-    image: outdoorGamesImg,
-  },
-  {
-    title: "Safety & Infrastructure",
-    description:
-      "Earthquake-resistant structure, 24x7 CCTV security, biometric access, and fire safety systems.",
-    image: securityImg,
-  },
-  {
-    title: "Connectivity",
-    description:
-      "Minutes from Doon IT Park, Rajpur Road, schools, hospitals, and Jolly Grant Airport.",
+      "Unwind with breathtaking views in our luxurious rooftop infinity pool.",
     image: swimmingPoolImg,
   },
   {
-    title: "Investment Potential",
+    title: "Clubhouse",
     description:
-      "High rental yield and capital appreciation in Dehradun’s fastest-growing zones.",
+      "A vibrant social hub with lounge, café, library, and indoor games for community bonding.",
+    image: outdoorGamesImg,
+  },
+  {
+    title: "Gym",
+    description:
+      "Fully-equipped modern fitness center designed to support your active lifestyle.",
+    image: gymImg,
+  },
+  {
+    title: "Mini Theatre",
+    description:
+      "Enjoy movie nights and private screenings with family in a cozy mini theatre.",
+    image: indoorGamesImg,
+  },
+  {
+    title: "Meditation Garden",
+    description:
+      "Find inner peace in our serene meditation garden surrounded by nature.",
+    image: multiPurposeImg,
+  },
+  {
+    title: "Jogging Track",
+    description:
+      "Stay fit with our dedicated jogging path set amidst lush green landscapes.",
     image: joggingTrackImg,
   },
   {
-    title: "Multi Purpose Hall",
+    title: "Kids Play Zone",
     description:
-      "Spacious hall ideal for gatherings, events, and community meetings.",
+      "Safe and colorful play area where children can explore, play, and grow.",
+    image: kidsPlayImg,
+  },
+  {
+    title: "Central Lawn",
+    description:
+      "Expansive central green for outdoor gatherings, leisure, and community events.",
+    image: securityImg,
+  },
+  {
+    title: "Banquet Hall",
+    description:
+      "Elegant venue for family functions, celebrations, and special occasions.",
     image: multiPurposeImg,
+  },
+  {
+    title: "Cabanas",
+    description:
+      "Private cabanas by the poolside offer a perfect space to relax and socialize.",
+    image: swimmingPoolImg,
+  },
+  {
+    title: "Board Games Area",
+    description:
+      "Fun and engaging space for indoor board games, perfect for all age groups.",
+    image: indoorGamesImg,
   },
 ];
 
@@ -68,7 +87,7 @@ export default function AmenitiesSection() {
     window.dispatchEvent(new Event("openPopup")); // Dispatch event to open popup
   };
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white" id="amenities">
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Subtitle & Title */}
         <p className="text-xl md:text-2xl text-gray-600 mb-2">
