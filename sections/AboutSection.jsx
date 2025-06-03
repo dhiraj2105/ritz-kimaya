@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import aboutImg from "../assets/about.jpg";
+import aboutImg from "../assets/About_project_Image.jpg";
 
 export default function AboutSection() {
   const openPopup = () => {

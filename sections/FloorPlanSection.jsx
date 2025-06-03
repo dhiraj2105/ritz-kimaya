@@ -3,32 +3,35 @@
 import React from "react";
 import Image from "next/image";
 
-import img from "../assets/floor-plan.jpg";
+import bhk2 from "../assets/2BHK_Floor_Plan.jpg";
+import bhk3 from "../assets/3bhk_Floor_Plan.jpg";
+import bhk4 from "../assets/4bhk_Floor_plan.jpg";
+import penthouse from "../assets/Penthouse_FloorPlan.jpg";
 
 const floorPlans = [
   {
     title: "2 BHK",
     size: "1195 – 1820 sq. ft.",
     desc: "Perfect for nuclear families with spacious living areas.",
-    image: img,
+    image: bhk2,
   },
   {
     title: "3 BHK",
     size: "1390 – 2135 sq. ft.",
     desc: "For growing families requiring more room and comfort.",
-    image: img,
+    image: bhk3,
   },
   {
     title: "4 BHK",
     size: "2645 – 2775 sq. ft.",
     desc: "Premium villas for those who want expansive luxury and privacy.",
-    image: img,
+    image: bhk4,
   },
   {
     title: "PentHouse",
     size: "Available on request",
     desc: "With panoramic views and modern interiors",
-    image: img,
+    image: penthouse,
   },
 ];
 
@@ -60,7 +63,7 @@ export default function FloorPlanSection() {
                   src={plan.image}
                   alt={plan.title}
                   fill
-                  className="object-cover"
+                  className="object-cover blur-[4px]"
                 />
               </div>
               <div className="p-6 text-left">

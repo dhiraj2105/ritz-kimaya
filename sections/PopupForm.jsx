@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import logo from "../assets/banner-new.webp";
+import logo from "../assets/Kimaya_Greens_Hero_Image.jpg";
 
 export default function PopupForm() {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import bannerImg from "../assets/banner-new.webp";
+import bannerImg from "../assets/Kimaya_Greens_Hero_Image.jpg";
 
 export default function HeroSection() {
   const openPopup = () => {
@@ -19,7 +19,6 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/60"></div>
 
       {/* Content Wrapper */}
-      {/* <div className="relative z-10 h-full flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-10 text-white"> */}
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-center min-h-[calc(100vh-4rem)] px-6 md:px-20 py-10 text-white">
         {/* Left Content */}
         <div className="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
@@ -36,7 +35,8 @@ export default function HeroSection() {
         </div>
 
         {/* Right Form */}
-        <div className="md:w-2/5 bg-white bg-opacity-90 p-6 rounded-lg shadow-lg text-gray-800 w-full max-w-md">
+        {/* <div className="md:w-2/5 bg-white p-6 rounded-lg shadow-lg text-gray-800 w-full max-w-md"> */}
+        <div className="md:w-2/5 backdrop-blur-xs bg-[#e2e2e2] p-6 rounded-lg shadow-lg text-gray-800 w-full max-w-md">
           <h3 className="text-2xl font-bold mb-4 text-center">
             Book Your Best Deal Now!
           </h3>
