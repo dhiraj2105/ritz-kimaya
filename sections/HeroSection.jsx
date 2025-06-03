@@ -21,9 +21,6 @@ export default function HeroSection() {
         {
           method: "POST",
           body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-          },
         }
       );
 

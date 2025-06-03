@@ -242,7 +242,7 @@ export default function ContactForm() {
                 Send Message
               </button>
             </form>
-            {status && <p className="mt-4 text-center">{status}</p>}{" "}
+            {/* {status && <p className="mt-4 text-center">{status}</p>}{" "} */}
             {/* Display status */}
           </div>
         </div>
