@@ -47,19 +47,19 @@ export default function PopupForm() {
               <button
                 onClick={closeModal}
                 aria-label="Close popup"
-                className="absolute top-3 right-4 text-black font-bold hover:text-gray-800 text-3xl z-10"
+                className="absolute top-3 right-4 text-black font-extrabold text-4xl p-2 hover:text-gray-800 z-10"
               >
                 ×
               </button>
 
-              {/* Left Image (fixed height to avoid cropping) */}
-              <div className="w-full md:w-1/2 max-h-64 md:max-h-full overflow-hidden">
+              {/* Left Image */}
+              <div className="hidden md:block md:w-1/2 max-h-64 md:max-h-full overflow-hidden">
                 <Image
                   src={logo}
                   alt="Sikka Kimaya"
                   width={600}
                   height={600}
-                  className="w-full h-full object-contain md:object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
 

@@ -7,27 +7,27 @@ import img from "../assets/floor-plan.jpg";
 
 const floorPlans = [
   {
-    title: "1 BHK",
-    size: "Approx. 775 sq. ft.",
-    desc: "Ideal for singles or couples seeking compact luxury.",
-    image: img,
-  },
-  {
     title: "2 BHK",
-    size: "1,195 – 1,820 sq. ft.",
+    size: "1195 – 1820 sq. ft.",
     desc: "Perfect for nuclear families with spacious living areas.",
     image: img,
   },
   {
     title: "3 BHK",
-    size: "1,390 – 2,135 sq. ft.",
+    size: "1390 – 2135 sq. ft.",
     desc: "For growing families requiring more room and comfort.",
     image: img,
   },
   {
     title: "4 BHK",
-    size: "2,645 – 2,775 sq. ft.",
+    size: "2645 – 2775 sq. ft.",
     desc: "Premium villas for those who want expansive luxury and privacy.",
+    image: img,
+  },
+  {
+    title: "PentHouse",
+    size: "Available on request",
+    desc: "With panoramic views and modern interiors",
     image: img,
   },
 ];
@@ -68,7 +68,7 @@ export default function FloorPlanSection() {
                   {plan.title}
                 </h3>
                 <p className="text-md text-gray-600 mb-2">{plan.size}</p>
-                <p className="text-gray-700 text-base mb-4">{plan.desc}</p>
+                <p className="text-gray-500 text-[15px] mb-4">{plan.desc}</p>
 
                 {/* Individual Button */}
                 <button
