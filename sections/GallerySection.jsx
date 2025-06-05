@@ -150,8 +150,6 @@ export default function GallerySection() {
 
         <Swiper
           modules={[Navigation, Pagination, Autoplay, Keyboard]}
-          navigation
-          pagination={{ clickable: true }}
           keyboard={{ enabled: true }}
           autoplay={{ delay: 3000 }}
           loop
