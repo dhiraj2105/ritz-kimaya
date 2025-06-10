@@ -1,167 +1,3 @@
-// "use client";
-
-// import React from "react";
-// import Image from "next/image";
-
-// // Image imports
-// import gymImg from "../assets/AMTY/GYM.png";
-// import Banquet_Hall from "../assets/AMTY/Banquet_Hall.png";
-// import Board_Games_Area from "../assets/AMTY/Board_Games_Area.jpg";
-// import Cabanas from "../assets/AMTY/Cabanas.png";
-// import Central_Lawn from "../assets/AMTY/Central_Lawn.png";
-// import Infinity_Pool_icon from "../assets/AMTY/Infinity_Pool_icon.png";
-// import Jogging_Track from "../assets/AMTY/Jogging_Track.png";
-// import Kids_Play_Zone from "../assets/AMTY/Kids_Play_Zone.png";
-// import Low_Density_Living from "../assets/AMTY/Low_Density_Living.png";
-// import Meditation_Garden from "../assets/AMTY/Meditation_Garden.png";
-// import Mini_Theatre from "../assets/AMTY/Mini_Theatre.png";
-
-// // Amenities data
-// const amenities = [
-//   {
-//     title: "Infinity Swimming Pool",
-//     description:
-//       "Unwind with breathtaking views in our luxurious rooftop infinity pool.",
-//     image: Infinity_Pool_icon,
-//   },
-//   {
-//     title: "Clubhouse",
-//     description:
-//       "A vibrant social hub with lounge, café, library, and indoor games for community bonding.",
-//     image: Low_Density_Living,
-//   },
-//   {
-//     title: "Gym",
-//     description:
-//       "Fully-equipped modern fitness center designed to support your active lifestyle.",
-//     image: gymImg,
-//   },
-//   {
-//     title: "Mini Theatre",
-//     description:
-//       "Enjoy movie nights and private screenings with family in a cozy mini theatre.",
-//     image: Mini_Theatre,
-//   },
-//   {
-//     title: "Meditation Garden",
-//     description:
-//       "Find inner peace in our serene meditation garden surrounded by nature.",
-//     image: Meditation_Garden,
-//   },
-//   {
-//     title: "Jogging Track",
-//     description:
-//       "Stay fit with our dedicated jogging path set amidst lush green landscapes.",
-//     image: Jogging_Track,
-//   },
-//   {
-//     title: "Kids Play Zone",
-//     description:
-//       "Safe and colorful play area where children can explore, play, and grow.",
-//     image: Kids_Play_Zone,
-//   },
-//   {
-//     title: "Central Lawn",
-//     description:
-//       "Expansive central green for outdoor gatherings, leisure, and community events.",
-//     image: Central_Lawn,
-//   },
-//   {
-//     title: "Banquet Hall",
-//     description:
-//       "Elegant venue for family functions, celebrations, and special occasions.",
-//     image: Banquet_Hall,
-//   },
-//   {
-//     title: "Cabanas",
-//     description:
-//       "Private cabanas by the poolside offer a perfect space to relax and socialize.",
-//     image: Cabanas,
-//   },
-//   {
-//     title: "Board Games Area",
-//     description:
-//       "Fun and engaging space for indoor board games, perfect for all age groups.",
-//     image: Board_Games_Area,
-//   },
-// ];
-
-// export default function AmenitiesSection() {
-//   return (
-//     <section className="py-20 bg-white" id="amenities">
-//       <div className="max-w-7xl mx-auto px-6 text-center">
-//         {/* Section Header */}
-//         <p className="text-xl md:text-2xl text-gray-600 mb-2">
-//           Amenities
-//           <span className="block w-20 h-1 bg-[#A8BE04] mt-1 mx-auto"></span>
-//         </p>
-//         <h2 className="text-black text-4xl md:text-5xl font-bold mb-10">
-//           Everything You Need. Thoughtfully Designed.
-//         </h2>
-
-//         {/* Amenity Grid */}
-//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-//           {amenities.slice(0, amenities.length - 3).map((item, index) => (
-//             <div
-//               key={index}
-//               className="bg-gray-50 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col text-left"
-//             >
-//               <div className="w-full h-64 relative">
-//                 <Image
-//                   src={item.image}
-//                   alt={item.title}
-//                   fill
-//                   className="object-cover"
-//                 />
-//               </div>
-//               <div className="p-6 flex flex-col flex-grow">
-//                 <h3 className="text-xl font-semibold text-[#597b88] mb-2">
-//                   {item.title}
-//                 </h3>
-//                 <p className="text-gray-700 text-sm">{item.description}</p>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* Last 3 Centered in Row */}
-//         <div className="flex flex-wrap justify-center gap-8 mb-10">
-//           {amenities.slice(-3).map((item, index) => (
-//             <div
-//               key={index}
-//               className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] bg-gray-50 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col text-left"
-//             >
-//               <div className="w-full h-64 relative">
-//                 <Image
-//                   src={item.image}
-//                   alt={item.title}
-//                   fill
-//                   className="object-cover"
-//                 />
-//               </div>
-//               <div className="p-6 flex flex-col flex-grow">
-//                 <h3 className="text-xl font-semibold text-[#597b88] mb-2">
-//                   {item.title}
-//                 </h3>
-//                 <p className="text-gray-700 text-sm">{item.description}</p>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* CTA */}
-//         <button
-//           className="bg-[#A8BE04] text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-md hover:bg-[#94a503] transition duration-300"
-//           onClick={() => window.dispatchEvent(new Event("openPopup"))}
-//         >
-//           Explore All Features
-//         </button>
-//       </div>
-//     </section>
-//   );
-// }
-
-// v2
 "use client";
 
 import React from "react";
@@ -180,7 +16,6 @@ import Low_Density_Living from "../assets/AMTY/Low_Density_Living.png";
 import Meditation_Garden from "../assets/AMTY/Meditation_Garden.png";
 import Mini_Theatre from "../assets/AMTY/Mini_Theatre.png";
 
-// Amenities data
 const amenities = [
   {
     title: "Infinity Swimming Pool",
@@ -251,66 +86,113 @@ const amenities = [
 ];
 
 export default function AmenitiesSection() {
+  const openPopup = () => {
+    window.dispatchEvent(new Event("openPopup"));
+  };
+
   return (
-    <section className="py-20 bg-white" id="amenities">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+    <section className="py-5 bg-white" id="amenities">
+      <div className="container text-center">
         {/* Section Header */}
-        <p className="text-xl md:text-2xl text-gray-600 mb-2">
+        <p className="fs-4 text-secondary mb-2">
           Amenities
-          <span className="block w-20 h-1 bg-[#A8BE04] mt-1 mx-auto"></span>
+          <span
+            className="d-block mx-auto mt-2"
+            style={{
+              width: "80px",
+              height: "4px",
+              backgroundColor: "#A8BE04",
+            }}
+          ></span>
         </p>
-        <h2 className="text-black text-4xl md:text-5xl font-bold mb-10">
+        <h2 className="fw-bold display-5 text-dark mb-5">
           Everything You Need. Thoughtfully Designed.
         </h2>
 
-        {/* Amenity Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {amenities.slice(0, -3).map((item, index) => (
-            <div
-              key={index}
-              className="bg-gray-50 rounded-xl shadow-md hover:shadow-xl ring-1 ring-transparent hover:ring-[#A8BE04] transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center p-6"
-            >
-              <Image
-                src={item.image}
-                alt={item.title}
-                width={100}
-                height={100}
-                className="mb-4 object-contain transition-transform duration-300 hover:scale-110"
-              />
-              <h3 className="text-xl font-semibold text-[#597b88] mb-2">
-                {item.title}
-              </h3>
-              <p className="text-gray-700 text-sm">{item.description}</p>
+        {/* Amenity Grid - First 8 */}
+        <div className="row g-4 mb-5">
+          {amenities.slice(0, 8).map((item, index) => (
+            <div key={index} className="col-12 col-sm-6 col-lg-3">
+              <div
+                className="card h-100 text-center align-items-center shadow-sm border-0 p-3"
+                style={{
+                  transition: "transform 0.3s, box-shadow 0.3s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-5px)";
+                  e.currentTarget.style.boxShadow = "0 0.5rem 1rem rgba(0,0,0,0.15)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "none";
+                  e.currentTarget.style.boxShadow = "0 .125rem .25rem rgba(0,0,0,.075)";
+                }}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={100}
+                  height={100}
+                  className="mb-3 object-fit-contain"
+                  style={{ transition: "transform 0.3s" }}
+                />
+                <h5 className="fw-semibold  mb-2" style={{ color: "#587B89" }}>
+                  {item.title}
+                </h5>
+                <p className="text-muted small">{item.description}</p>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Last 3 Centered in Row */}
-        <div className="flex flex-wrap justify-center gap-10 mb-12">
+        {/* Remaining 3 Amenities Centered */}
+        <div className="row justify-content-center g-4 mb-5">
           {amenities.slice(-3).map((item, index) => (
-            <div
-              key={index}
-              className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] bg-gray-50 rounded-xl shadow-md hover:shadow-xl ring-1 ring-transparent hover:ring-[#A8BE04] transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center p-6"
-            >
-              <Image
-                src={item.image}
-                alt={item.title}
-                width={100}
-                height={100}
-                className="mb-4 object-contain transition-transform duration-300 hover:scale-110"
-              />
-              <h3 className="text-xl font-semibold text-[#597b88] mb-2">
-                {item.title}
-              </h3>
-              <p className="text-gray-700 text-sm">{item.description}</p>
+            <div key={index} className="col-12 col-md-6 col-lg-4">
+              <div
+                className="card h-100 text-center align-items-center shadow-sm border-0 p-3"
+                style={{
+                  transition: "transform 0.3s, box-shadow 0.3s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-5px)";
+                  e.currentTarget.style.boxShadow = "0 0.5rem 1rem rgba(0,0,0,0.15)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "none";
+                  e.currentTarget.style.boxShadow = "0 .125rem .25rem rgba(0,0,0,.075)";
+                }}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={100}
+                  height={100}
+                  className="mb-3 object-fit-contain"
+                  style={{ transition: "transform 0.3s" }}
+                />
+                <h5 className="fw-semibold  mb-2" style={{ color: "#587B89" }}>
+                  {item.title}
+                </h5>
+                <p className="text-muted small">{item.description}</p>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
+        {/* CTA Button */}
         <button
-          className="bg-[#A8BE04] text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-md hover:bg-[#94a503] transition duration-300"
-          onClick={() => window.dispatchEvent(new Event("openPopup"))}
+          className="btn text-white fs-5 fw-semibold px-5 py-3 shadow"
+          style={{
+            backgroundColor: "#A8BE04",
+            transition: "background-color 0.3s",
+          }}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = "#94a503")
+          }
+          onMouseOut={(e) =>
+            (e.currentTarget.style.backgroundColor = "#A8BE04")
+          }
+          onClick={openPopup}
         >
           Explore All Features
         </button>

@@ -7,21 +7,29 @@ export default function ClosingStatementSection() {
     window.dispatchEvent(new Event("openPopup")); // Dispatch event to open popup
   };
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-4xl mx-auto px-6 text-center">
+    <section className="py-5 bg-light">
+      <div className="container text-center px-3" style={{ maxWidth: "768px" }}>
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-gray-600 mb-2">
+        <p className="fs-5 text-secondary mb-2">
           Closing Statement
-          <span className="block w-20 h-1 bg-[#A8BE04] mt-1 mx-auto"></span>
+          <span
+            className="d-block mx-auto mt-1"
+            style={{
+              width: "80px",
+              height: "4px",
+              backgroundColor: "#A8BE04",
+              borderRadius: "2px",
+            }}
+          />
         </p>
 
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
+        <h2 className="text-dark fw-bold display-6 mb-3 mb-md-4">
           A Lifestyle Beyond Expectations
         </h2>
 
         {/* Description */}
-        <p className="text-gray-700 text-lg leading-relaxed mb-8">
+        <p className="text-muted fs-5 lh-lg mb-4 mb-md-5">
           Sikka Kimaya Greens is more than just a residence—it’s a lifestyle
           choice where luxury, nature, and modernity converge. Whether you’re
           investing, upgrading, or looking for your serene second home, Kimaya
@@ -32,8 +40,22 @@ export default function ClosingStatementSection() {
 
         {/* CTA Button */}
         <button
-          className="bg-[#A8BE04] text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-md hover:bg-[#94a503] transition duration-300"
+          type="button"
+          className="btn"
+          style={{
+            backgroundColor: "#A8BE04",
+            color: "#fff",
+            fontSize: "1.125rem",
+            fontWeight: "600",
+            padding: "1rem 2rem",
+            borderRadius: "0.5rem",
+            boxShadow:
+              "0 4px 6px rgba(168, 190, 4, 0.4)",
+            transition: "background-color 0.3s ease",
+          }}
           onClick={openPopup}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#94a503")}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#A8BE04")}
         >
           Enquire Now
         </button>

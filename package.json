@@ -11,6 +11,8 @@
   "dependencies": {
     "@hcaptcha/react-hcaptcha": "^1.12.0",
     "aos": "^2.3.4",
+    "bootstrap": "^5.3.6",
+    "bootstrap-icons": "^1.13.1",
     "framer-motion": "^12.15.0",
     "next": "15.3.3",
     "react": "^19.0.0",
@@ -24,7 +26,6 @@
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
-    "eslint-config-next": "15.3.3",
-    "tailwindcss": "^4"
+    "eslint-config-next": "15.3.3"
   }
 }

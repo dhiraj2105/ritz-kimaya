@@ -10,53 +10,70 @@ import {
   FaShieldAlt,
 } from "react-icons/fa";
 
+const iconColor = "#587B89";
+
 const overviewData = [
-  { icon: <FaHome size={72} />, title: "Luxury Living Spaces" },
-  { icon: <FaMapMarkerAlt size={72} />, title: "Prime Dehradun Location" },
-  { icon: <FaBuilding size={72} />, title: "Modern Architecture" },
-  { icon: <FaRupeeSign size={72} />, title: "Affordable Pricing" },
-  { icon: <FaTree size={72} />, title: "Green Landscapes" },
-  { icon: <FaShieldAlt size={72} />, title: "24x7 Security" },
+  { icon: <FaHome size={72} color={iconColor} />, title: "Luxury Living Spaces" },
+  { icon: <FaMapMarkerAlt size={72} color={iconColor} />, title: "Prime Dehradun Location" },
+  { icon: <FaBuilding size={72} color={iconColor} />, title: "Modern Architecture" },
+  { icon: <FaRupeeSign size={72} color={iconColor} />, title: "Affordable Pricing" },
+  { icon: <FaTree size={72} color={iconColor} />, title: "Green Landscapes" },
+  { icon: <FaShieldAlt size={72} color={iconColor} />, title: "24x7 Security" },
 ];
 
 export default function OverviewSection() {
   const openPopup = () => {
-    window.dispatchEvent(new Event("openPopup")); // Dispatch event to open popup
+    window.dispatchEvent(new Event("openPopup"));
   };
+
   return (
-    <section className="py-20 bg-gray-50 min-h-[60vh]">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+    <section className="py-5 bg-light" style={{ minHeight: "60vh" }}>
+      <div className="container text-center">
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-gray-600 mb-3">
+        <p className="fs-4 text-secondary mb-2">
           Overview
-          <span className="block w-20 h-1 bg-[#A8BE04] mt-1 mx-auto"></span>
+          <span
+            className="d-block mx-auto mt-2"
+            style={{
+              width: "80px",
+              height: "4px",
+              backgroundColor: "#A8BE04",
+            }}
+          ></span>
         </p>
 
         {/* Title */}
-        <h2 className="text-black text-4xl md:text-5xl font-bold mb-10 inline-block relative">
-          Sikka Kimaya
-        </h2>
+        <h2 className="fw-bold display-5 mb-5">Sikka Kimaya</h2>
 
-        {/* Grid of Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 mb-12">
+        {/* Grid */}
+        <div className="row g-4 mb-5">
           {overviewData.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center bg-white shadow-lg rounded-xl p-8 min-h-[160px] hover:shadow-2xl transition"
-            >
-              <div className="text-[#597b88] mr-6 flex-shrink-0">
-                {item.icon}
+            <div key={index} className="col-12 col-sm-6 col-lg-4">
+              <div className="d-flex align-items-center bg-white shadow rounded p-4 h-100 transition hover-shadow-lg">
+                <div className="me-4">
+                  {item.icon}
+                </div>
+                <h3 className="h5 fw-semibold text-start mb-0">
+                  {item.title}
+                </h3>
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-gray-800 leading-snug">
-                {item.title}
-              </h3>
             </div>
           ))}
         </div>
 
-        {/* Download Brochure Button */}
+        {/* Button */}
         <button
-          className="bg-[#A8BE04] text-white text-lg md:text-xl font-semibold px-8 py-4 rounded-lg shadow-md hover:bg-[#94a503] transition duration-300"
+          className="btn text-white fs-5 fw-semibold px-5 py-3 shadow"
+          style={{
+            backgroundColor: "#A8BE04",
+            transition: "background-color 0.3s",
+          }}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = "#94a503")
+          }
+          onMouseOut={(e) =>
+            (e.currentTarget.style.backgroundColor = "#A8BE04")
+          }
           onClick={openPopup}
         >
           Download Brochure

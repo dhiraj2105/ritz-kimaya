@@ -1,158 +1,29 @@
-// "use client";
-
-// import React, { useState } from "react";
-// import contactImg from "../assets/kimaya-creative.jpeg";
-
-// export default function ContactForm() {
-//   const [status, setStatus] = useState(""); // To display success/error messages
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     const form = e.target;
-//     const data = {
-//       name: form[0].value,
-//       email: form[1].value,
-//       phone: form[2].value,
-//       message: form[3].value,
-//     };
-
-//     try {
-//       const response = await fetch(
-//         "https://script.google.com/macros/s/AKfycbwFUrsuEzkLUjc07z9MXmKwKSb1zGNo8gCJrmNLI0mCqkhopIjdHYqzvT2zcTKMpqL7Xg/exec", // Google Apps Script URL
-//         {
-//           method: "POST",
-//           body: JSON.stringify(data),
-//         }
-//       );
-
-//       const result = await response.json();
-//       if (result.result === "success") {
-//         setStatus("Message sent successfully!");
-//         form.reset();
-//       } else {
-//         setStatus(`Error: ${result.message || "Something went wrong!"}`);
-//       }
-//     } catch (error) {
-//       setStatus("Failed to submit. Please try again.");
-//       console.error("Submit error:", error);
-//     }
-//   };
-
-//   return (
-//     <section className="py-20 bg-white" id="contact">
-//       <div className="max-w-[82rem] mx-auto px-6">
-//         <div className="text-center mb-12">
-//           <p className="text-xl md:text-2xl text-gray-600 mb-2">
-//             Get in Touch
-//             <span className="block w-20 h-1 bg-[#A8BE04] mt-1 mx-auto"></span>
-//           </p>
-//           <h2 className="text-black text-4xl md:text-5xl font-bold">
-//             Contact Us
-//           </h2>
-//         </div>
-
-//         <div className="flex flex-col lg:flex-row items-center gap-12">
-//           <div className="lg:w-1/2 w-full">
-//             <img
-//               src={contactImg.src}
-//               alt="Contact Visual"
-//               className="w-full h-auto rounded-xl shadow-md"
-//             />
-//           </div>
-
-//           <div className="lg:w-1/2 w-full text-black bg-gray-50 p-8 rounded-xl shadow-md">
-//             <form onSubmit={handleSubmit} className="space-y-6">
-//               <div>
-//                 <label className="block text-lg text-gray-700 mb-2">Name</label>
-//                 <input
-//                   type="text"
-//                   required
-//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A8BE04]"
-//                   placeholder="Your Name"
-//                 />
-//               </div>
-
-//               <div>
-//                 <label className="block text-lg text-gray-700 mb-2">
-//                   Email
-//                 </label>
-//                 <input
-//                   type="email"
-//                   required
-//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A8BE04]"
-//                   placeholder="you@example.com"
-//                 />
-//               </div>
-
-//               <div>
-//                 <label className="block text-lg text-gray-700 mb-2">
-//                   Phone
-//                 </label>
-//                 <input
-//                   type="tel"
-//                   required
-//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A8BE04]"
-//                   placeholder="123-456-7890"
-//                 />
-//               </div>
-
-//               <div>
-//                 <label className="block text-lg text-gray-700 mb-2">
-//                   Message
-//                 </label>
-//                 <textarea
-//                   required
-//                   rows="5"
-//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A8BE04]"
-//                   placeholder="Your message here..."
-//                 ></textarea>
-//               </div>
-
-//               <button
-//                 type="submit"
-//                 className="bg-[#A8BE04] text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-md hover:bg-[#94a503] transition duration-300"
-//               >
-//                 Send Message
-//               </button>
-//             </form>
-//             {/* {status && <p className="mt-4 text-center">{status}</p>}{" "} */}
-//             {/* Display status */}
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import contactImg from "../assets/kimaya-creative.jpeg";
 import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ContactForm() {
   const [status, setStatus] = useState("");
   const [captchaToken, setCaptchaToken] = useState(null);
+  const formRef = useRef();
 
-  const handleCaptchaChange = (token) => {
-    setCaptchaToken(token);
-  };
+  const handleCaptchaChange = (token) => setCaptchaToken(token);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!captchaToken) {
       setStatus("Please verify you're not a robot.");
       return;
     }
 
-    const form = e.target;
+    const formData = new FormData(formRef.current);
     const data = {
-      name: form[0].value,
-      email: form[1].value,
-      phone: form[2].value,
-      message: form[3].value,
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      message: formData.get("message"),
     };
 
     try {
@@ -167,104 +38,144 @@ export default function ContactForm() {
       const result = await response.json();
       if (result.result === "success") {
         setStatus("Message sent successfully!");
-        form.reset();
-        setCaptchaToken(null); // Reset CAPTCHA
+        formRef.current.reset();
+        setCaptchaToken(null);
       } else {
-        setStatus(`Error: ${result.message || "Something went wrong!"}`);
+        setStatus("Something went wrong. Please try again.");
       }
-    } catch (error) {
-      setStatus("Failed to submit. Please try again.");
-      console.error("Submit error:", error);
+    } catch (err) {
+      console.error(err);
+      setStatus("Submission error. Please try again.");
     }
   };
 
   return (
-    <section className="py-20 bg-white" id="contact">
-      <div className="max-w-[82rem] mx-auto px-6">
-        <div className="text-center mb-12">
-          <p className="text-xl md:text-2xl text-gray-600 mb-2">
+    <section className="py-5 bg-white" id="contact">
+      <div className="container" style={{ maxWidth: "82rem" }}>
+        {/* Header */}
+        <div className="text-center mb-5">
+          <p className="fs-5 text-muted mb-2">
             Get in Touch
-            <span className="block w-20 h-1 bg-[#A8BE04] mt-1 mx-auto"></span>
+            <span
+              className="d-block mx-auto mt-2"
+              style={{
+                width: "70px",
+                height: "4px",
+                backgroundColor: "#A8BE04",
+                borderRadius: "2px",
+              }}
+            ></span>
           </p>
-          <h2 className="text-black text-4xl md:text-5xl font-bold">
-            Contact Us
-          </h2>
+          <h2 className="text-dark fw-bold display-5">Contact Us</h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          <div className="lg:w-1/2 w-full">
+        <div className="row g-5 align-items-center">
+          {/* Image Column */}
+          <div className="col-lg-6">
             <img
               src={contactImg.src}
               alt="Contact Visual"
-              className="w-full h-auto rounded-xl shadow-md"
+              className="img-fluid rounded-4 shadow"
             />
           </div>
 
-          <div className="lg:w-1/2 w-full text-black bg-gray-50 p-8 rounded-xl shadow-md">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-lg text-gray-700 mb-2">Name</label>
-                <input
-                  type="text"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A8BE04]"
-                  placeholder="Your Name"
-                />
-              </div>
+          {/* Form Column */}
+          <div className="col-lg-6">
+            <div className="bg-light rounded-4 p-4 p-md-5 shadow-sm">
+              <form ref={formRef} onSubmit={handleSubmit} className="needs-validation">
+                {/* Name */}
+                <div className="mb-3">
+                  <label htmlFor="name" className="form-label fw-medium text-secondary">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    className="form-control"
+                    placeholder="Your full name"
+                    required
+                  />
+                </div>
 
-              <div>
-                <label className="block text-lg text-gray-700 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A8BE04]"
-                  placeholder="you@example.com"
-                />
-              </div>
+                {/* Email */}
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label fw-medium text-secondary">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    className="form-control"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
 
-              <div>
-                <label className="block text-lg text-gray-700 mb-2">
-                  Phone
-                </label>
-                <input
-                  type="tel"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A8BE04]"
-                  placeholder="123-456-7890"
-                />
-              </div>
+                {/* Phone */}
+                <div className="mb-3">
+                  <label htmlFor="phone" className="form-label fw-medium text-secondary">
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    className="form-control"
+                    placeholder="123-456-7890"
+                    required
+                  />
+                </div>
 
-              <div>
-                <label className="block text-lg text-gray-700 mb-2">
-                  Message
-                </label>
-                <textarea
-                  required
-                  rows="5"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A8BE04]"
-                  placeholder="Your message here..."
-                ></textarea>
-              </div>
+                {/* Message */}
+                <div className="mb-3">
+                  <label htmlFor="message" className="form-label fw-medium text-secondary">
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    rows={4}
+                    className="form-control"
+                    placeholder="Your message..."
+                    required
+                  ></textarea>
+                </div>
 
-              {/* Google reCAPTCHA */}
-              <ReCAPTCHA
-                sitekey="6Lf-XVYrAAAAAMFeejFKY1OquTf-BrCgHV3l3w55" // 🔁 Replace with your real site key
-                onChange={handleCaptchaChange}
-              />
+                {/* reCAPTCHA */}
+                <div className="mb-4">
+                  <ReCAPTCHA
+                    sitekey="6Lf-XVYrAAAAAMFeejFKY1OquTf-BrCgHV3l3w55"
+                    onChange={handleCaptchaChange}
+                  />
+                </div>
 
-              <button
-                type="submit"
-                className="bg-[#A8BE04] text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-md hover:bg-[#94a503] transition duration-300"
-              >
-                Send Message
-              </button>
-            </form>
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  className="btn w-100"
+                  style={{
+                    backgroundColor: "#A8BE04",
+                    color: "#fff",
+                    fontSize: "1.1rem",
+                    fontWeight: 600,
+                    padding: "0.75rem",
+                    borderRadius: "0.5rem",
+                    boxShadow: "0 5px 15px rgba(168, 190, 4, 0.3)",
+                    transition: "background-color 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#94a503")}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#A8BE04")}
+                >
+                  Send Message
+                </button>
+              </form>
 
-            {status && (
-              <p className="mt-4 text-center text-sm text-gray-700">{status}</p>
-            )}
+              {status && (
+                <p className="text-center mt-3 text-muted fw-medium">{status}</p>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -10,150 +10,109 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const openPopup = () => {
-    window.dispatchEvent(new Event("openPopup")); // Dispatch event to open popup
+    window.dispatchEvent(new Event("openPopup"));
   };
 
   return (
-    <header className="w-full rounded-xl  bg-white shadow-md fixed top-1 p-1 left-0 z-50 ">
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo on far left */}
-          <div className="flex items-center space-x-2">
-            <Link href="/">
-              <Image
-                src={logo}
-                alt="Logo"
-                width={120}
-                height={40}
-                className="object-contain hover:opacity-80 transition-opacity duration-300"
-              />
-            </Link>
+    <header className="bg-white shadow-sm fixed-top py-2 px-3 z-3">
+      <div className="container-fluid d-flex align-items-center justify-content-between flex-wrap">
+        {/* Left: Logos */}
+        <div className="d-flex align-items-center mb-2 mb-md-0">
+          <Link href="/" className="me-2">
+            <Image
+              src={logo}
+              alt="Logo"
+              width={120}
+              height={40}
+              className="img-fluid"
+            />
+          </Link>
 
-            <div className="w-px h-8 bg-gray-300" />
+          <div className="vr mx-2" />
 
-            <Link href="/">
-              <Image
-                src={kimayaLogo}
-                alt="Second Logo"
-                width={130}
-                height={50}
-                className="object-contain hover:opacity-80 transition-opacity duration-300"
-              />
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="flex md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
-
-          {/* Desktop navigation */}
-          <nav className="hidden md:flex flex-1 justify-center space-x-6 text-gray-700 font-medium">
-            {[
-              { href: "#home", label: "Home" },
-              { href: "#about", label: "About" },
-              { href: "#floorPlan", label: "Floor Plans" },
-              { href: "#amenities", label: "Amenities" },
-              { href: "#location", label: "Location" },
-            ].map(({ href, label }) => (
-              <div key={href} className="relative group">
-                <Link
-                  href={href}
-                  className="hover:text-primary transition-colors"
-                >
-                  {label}
-                </Link>
-                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#A8BE04] transition-all duration-300 group-hover:w-full"></span>
-              </div>
-            ))}
-          </nav>
-
-          {/* CTA Button on far right */}
-          <div className="hidden lg:flex">
-            <Link href="#schedule">
-              <button
-                className="text-white px-5 py-2 rounded-full  bg-[#A8BE04] hover:text-white cursor-pointer hover:shadow-md transition-all"
-                onClick={openPopup}
-              >
-                Schedule a Visit
-              </button>
-            </Link>
-          </div>
+          <Link href="/">
+            <Image
+              src={kimayaLogo}
+              alt="Second Logo"
+              width={130}
+              height={50}
+              className="img-fluid"
+            />
+          </Link>
         </div>
 
-        {/* Mobile menu dropdown */}
+        {/* Toggle for mobile */}
+        <button
+          className="btn btn-outline-secondary d-md-none"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle navigation"
+        >
+          <i className={`bi ${isOpen ? "bi-x" : "bi-list"}`}></i>
+        </button>
+
+        {/* Desktop Nav */}
+        <nav className="d-none d-md-flex flex-grow-1 justify-content-center gap-3 text-dark fw-medium">
+          {[
+            { href: "#home", label: "Home" },
+            { href: "#about", label: "About" },
+            { href: "#floorPlan", label: "Floor Plans" },
+            { href: "#amenities", label: "Amenities" },
+            { href: "#location", label: "Location" },
+          ].map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className="nav-link position-relative text-dark"
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* CTA Button - Desktop Only */}
+        <div className="d-none d-lg-block">
+          <Link href="/">
+            <button
+              className="btn btn-success rounded-pill px-4"
+              style={{ backgroundColor: "#A8BE04", borderColor: "#A8BE04" }}
+              onClick={openPopup}
+            >
+              Schedule a Visit
+            </button>
+          </Link>
+        </div>
+
+        {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-2 space-y-2 text-center text-gray-700 font-medium">
-            <Link
-              href="#about"
-              onClick={() => setIsOpen(false)}
-              className="block"
-            >
-              About
-            </Link>
-            <Link
-              href="#projects"
-              onClick={() => setIsOpen(false)}
-              className="block"
-            >
-              Projects
-            </Link>
-            <Link
-              href="#amenities"
-              onClick={() => setIsOpen(false)}
-              className="block"
-            >
-              Amenities
-            </Link>
-            <Link
-              href="#location"
-              onClick={() => setIsOpen(false)}
-              className="block"
-            >
-              Location
-            </Link>
-            <Link
-              href="#contact"
-              onClick={() => setIsOpen(false)}
-              className="block"
-            >
-              Contact
-            </Link>
-            <Link
-              href="#schedule"
-              onClick={() => setIsOpen(false)}
-              className="inline-block mt-2"
-            >
-              <button className="bg-primary text-black px-4 py-2 rounded-full hover:bg-opacity-90 hover:shadow-md transition-all">
-                Schedule a Visit
-              </button>
-            </Link>
+          <div className="w-100 d-md-none mt-3">
+            <div className="d-flex flex-column text-center gap-2 fw-medium">
+              <Link href="#about" onClick={() => setIsOpen(false)}>
+                About
+              </Link>
+              <Link href="#projects" onClick={() => setIsOpen(false)}>
+                Projects
+              </Link>
+              <Link href="#amenities" onClick={() => setIsOpen(false)}>
+                Amenities
+              </Link>
+              <Link href="#location" onClick={() => setIsOpen(false)}>
+                Location
+              </Link>
+              <Link href="#contact" onClick={() => setIsOpen(false)}>
+                Contact
+              </Link>
+              <Link href="/" onClick={() => setIsOpen(false)}>
+                <button
+                  className="btn rounded-pill mt-2"
+                  style={{
+                    backgroundColor: "#A8BE04",
+                    color: "white",
+                  }}
+                >
+                  Schedule a Visit
+                </button>
+              </Link>
+            </div>
           </div>
         )}
       </div>

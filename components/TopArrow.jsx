@@ -28,10 +28,20 @@ export default function TopArrow() {
       <button
         onClick={scrollToTop}
         data-aos="fade-up"
-        className="fixed bottom-6 right-6 z-50 bg-gray-800 text-white p-3 rounded-full shadow-md hover:bg-white hover:text-gray-900 transition-colors duration-300"
         aria-label="Back to top"
+        type="button"
+        className="btn btn-dark position-fixed bottom-0 end-0 m-3 rounded-circle shadow"
+        style={{ width: "48px", height: "48px", zIndex: 1050, transition: "color 0.3s, background-color 0.3s" }}
+        onMouseEnter={(e) => {
+          e.currentTarget.classList.remove("btn-dark");
+          e.currentTarget.classList.add("btn-light", "text-dark");
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.classList.add("btn-dark");
+          e.currentTarget.classList.remove("btn-light", "text-dark");
+        }}
       >
-        <FaArrowUp className="text-xl" />
+        <FaArrowUp className="fs-4" />
       </button>
     )
   );
