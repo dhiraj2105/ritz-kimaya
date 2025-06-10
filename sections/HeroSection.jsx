@@ -113,12 +113,30 @@ export default function HeroSection() {
               ></textarea>
             </div>
 
-            <div className="mb-3">
-              <ReCAPTCHA
-                sitekey="6Lf-XVYrAAAAAMFeejFKY1OquTf-BrCgHV3l3w55"
-                onChange={handleCaptchaChange}
-              />
+            {/* reCAPTCHA */}
+            <div
+              className="mb-4"
+              style={{
+                maxWidth: "304px",
+                width: "100%",
+              }}
+            >
+              <div
+                style={{
+                  transformOrigin: "top left",
+                  transform: "scale(0.85)",
+                  width: "304px",
+                  height: "78px",
+                }}
+                className="mx-auto"
+              >
+                <ReCAPTCHA
+                  sitekey="6Lf-XVYrAAAAAMFeejFKY1OquTf-BrCgHV3l3w55"
+                  onChange={handleCaptchaChange}
+                />
+              </div>
             </div>
+
 
             <button
               type="submit"
@@ -138,6 +156,16 @@ export default function HeroSection() {
           </p>
         </div>
       </div>
+
+      {/* Scoped CSS for responsive recaptcha */}
+      <style jsx>{`
+        @media (max-width: 576px) {
+          div > div.mx-auto {
+            transform: scale(0.65) !important;
+            height: 50px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

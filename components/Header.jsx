@@ -2,76 +2,89 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import logo from "../assets/logo.png";
 import kimayaLogo from "../assets/Website_Logo_Kimaya.png";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const openPopup = () => {
+  const openPopup = useCallback(() => {
     window.dispatchEvent(new Event("openPopup"));
-  };
+  }, []);
+
+  const toggleMenu = useCallback(() => {
+    setIsOpen((prevOpen) => !prevOpen);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+  }, []);
 
   return (
-    <header className="bg-white shadow-sm fixed-top py-2 px-3 z-3">
-      <div className="container-fluid d-flex align-items-center justify-content-between flex-wrap">
-        {/* Left: Logos */}
-        <div className="d-flex align-items-center mb-2 mb-md-0">
-          <Link href="/" className="me-2">
-            <Image
-              src={logo}
-              alt="Logo"
-              width={120}
-              height={40}
-              className="img-fluid"
-            />
-          </Link>
+    <header className="bg-white shadow-sm fixed-top py-2 px-3" style={{ zIndex: 1030 }}>
+      <div className="container-fluid">
+        <div className="row align-items-center">
+          {/* Left: Logos */}
+          <div className="col-auto flex-grow-1 flex-sm-grow-0">
+            <div className="d-flex align-items-center">
+              <Link href="/" className="me-1 me-sm-2">
+                <Image
+                  src={logo}
+                  alt="Logo"
+                  width={100}
+                  height={32}
+                  className="img-fluid d-none d-sm-block"
+                  priority
+                />
+                <Image
+                  src={logo}
+                  alt="Logo"
+                  width={80}
+                  height={26}
+                  className="img-fluid d-block d-sm-none"
+                  priority
+                />
+              </Link>
 
-          <div className="vr mx-2" />
+              <div className="vr mx-1 mx-sm-2 d-none d-sm-block" />
 
-          <Link href="/">
-            <Image
-              src={kimayaLogo}
-              alt="Second Logo"
-              width={130}
-              height={50}
-              className="img-fluid"
-            />
-          </Link>
-        </div>
+              <Link href="/" className="d-none d-sm-block">
+                <Image
+                  src={kimayaLogo}
+                  alt="Second Logo"
+                  width={110}
+                  height={42}
+                  className="img-fluid"
+                  priority
+                />
+              </Link>
+            </div>
+          </div>
 
-        {/* Toggle for mobile */}
-        <button
-          className="btn btn-outline-secondary d-md-none"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle navigation"
-        >
-          <i className={`bi ${isOpen ? "bi-x" : "bi-list"}`}></i>
-        </button>
+          {/* Desktop Nav - Hidden on mobile */}
+          <div className="col d-none d-md-flex justify-content-center">
+            <nav className="d-flex gap-4 text-dark fw-medium">
+              {[
+                { href: "#home", label: "Home" },
+                { href: "#about", label: "About" },
+                { href: "#floorPlan", label: "Floor Plans" },
+                { href: "#amenities", label: "Amenities" },
+                { href: "#location", label: "Location" },
+              ].map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="nav-link position-relative text-dark text-decoration-none"
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
+          </div>
 
-        {/* Desktop Nav */}
-        <nav className="d-none d-md-flex flex-grow-1 justify-content-center gap-3 text-dark fw-medium">
-          {[
-            { href: "#home", label: "Home" },
-            { href: "#about", label: "About" },
-            { href: "#floorPlan", label: "Floor Plans" },
-            { href: "#amenities", label: "Amenities" },
-            { href: "#location", label: "Location" },
-          ].map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="nav-link position-relative text-dark"
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* CTA Button - Desktop Only */}
-        <div className="d-none d-lg-block">
-          <Link href="/">
+          {/* CTA Button - Desktop Only */}
+          <div className="col-auto d-none d-lg-block">
             <button
               className="btn btn-success rounded-pill px-4"
               style={{ backgroundColor: "#A8BE04", borderColor: "#A8BE04" }}
@@ -79,39 +92,59 @@ export default function Header() {
             >
               Schedule a Visit
             </button>
-          </Link>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <div className="col-auto d-md-none">
+            <button
+              className="btn btn-outline-secondary border-0 p-2"
+              onClick={toggleMenu}
+              aria-label="Toggle navigation"
+              aria-expanded={isOpen}
+            >
+              <i className={`bi ${isOpen ? "bi-x" : "bi-list"} fs-5`}></i>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="w-100 d-md-none mt-3">
-            <div className="d-flex flex-column text-center gap-2 fw-medium">
-              <Link href="#about" onClick={() => setIsOpen(false)}>
-                About
-              </Link>
-              <Link href="#projects" onClick={() => setIsOpen(false)}>
-                Projects
-              </Link>
-              <Link href="#amenities" onClick={() => setIsOpen(false)}>
-                Amenities
-              </Link>
-              <Link href="#location" onClick={() => setIsOpen(false)}>
-                Location
-              </Link>
-              <Link href="#contact" onClick={() => setIsOpen(false)}>
-                Contact
-              </Link>
-              <Link href="/" onClick={() => setIsOpen(false)}>
-                <button
-                  className="btn rounded-pill mt-2"
-                  style={{
-                    backgroundColor: "#A8BE04",
-                    color: "white",
-                  }}
-                >
-                  Schedule a Visit
-                </button>
-              </Link>
+          <div className="row d-md-none mt-3">
+            <div className="col-12">
+              <div className="d-flex flex-column text-center gap-3 py-3 border-top">
+                {[
+                  { href: "#home", label: "Home" },
+                  { href: "#about", label: "About" },
+                  { href: "#floorPlan", label: "Floor Plans" },
+                  { href: "#amenities", label: "Amenities" },
+                  { href: "#location", label: "Location" },
+                ].map(({ href, label }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    onClick={closeMenu}
+                    className="nav-link text-dark text-decoration-none fw-medium py-2"
+                  >
+                    {label}
+                  </Link>
+                ))}
+                <div className="mt-2">
+                  <button
+                    className="btn rounded-pill px-4 py-2"
+                    style={{
+                      backgroundColor: "#A8BE04",
+                      color: "white",
+                      border: "none"
+                    }}
+                    onClick={() => {
+                      openPopup();
+                      closeMenu();
+                    }}
+                  >
+                    Schedule a Visit
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         )}

@@ -30,8 +30,17 @@ export default function TopArrow() {
         data-aos="fade-up"
         aria-label="Back to top"
         type="button"
-        className="btn btn-dark position-fixed bottom-0 end-0 m-3 rounded-circle shadow"
-        style={{ width: "48px", height: "48px", zIndex: 1050, transition: "color 0.3s, background-color 0.3s" }}
+        className="btn btn-dark position-fixed rounded-circle shadow"
+        style={{
+          width: "36px",
+          height: "36px",
+          zIndex: 1050,
+          transition: "color 0.3s, background-color 0.3s",
+          bottom: "16px", // roughly equal to Bootstrap's m-2
+          right: "16px",
+          overflow: "hidden",
+        }}
+
         onMouseEnter={(e) => {
           e.currentTarget.classList.remove("btn-dark");
           e.currentTarget.classList.add("btn-light", "text-dark");
@@ -41,7 +50,7 @@ export default function TopArrow() {
           e.currentTarget.classList.remove("btn-light", "text-dark");
         }}
       >
-        <FaArrowUp className="fs-4" />
+        <FaArrowUp className="fs-6" />
       </button>
     )
   );

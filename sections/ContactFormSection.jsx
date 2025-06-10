@@ -69,7 +69,7 @@ export default function ContactForm() {
           <h2 className="text-dark fw-bold display-5">Contact Us</h2>
         </div>
 
-        <div className="row g-5 align-items-center">
+        <div className="row g-4 align-items-center">
           {/* Image Column */}
           <div className="col-lg-6">
             <img
@@ -144,11 +144,27 @@ export default function ContactForm() {
                 </div>
 
                 {/* reCAPTCHA */}
-                <div className="mb-4">
-                  <ReCAPTCHA
-                    sitekey="6Lf-XVYrAAAAAMFeejFKY1OquTf-BrCgHV3l3w55"
-                    onChange={handleCaptchaChange}
-                  />
+                <div
+                  className="mb-4"
+                  style={{
+                    maxWidth: "304px",
+                    width: "100%",
+                  }}
+                >
+                  <div
+                    style={{
+                      transformOrigin: "top left",
+                      transform: "scale(0.85)",
+                      width: "304px",
+                      height: "78px",
+                    }}
+                    className="mx-auto"
+                  >
+                    <ReCAPTCHA
+                      sitekey="6Lf-XVYrAAAAAMFeejFKY1OquTf-BrCgHV3l3w55"
+                      onChange={handleCaptchaChange}
+                    />
+                  </div>
                 </div>
 
                 {/* Submit Button */}
@@ -179,6 +195,16 @@ export default function ContactForm() {
           </div>
         </div>
       </div>
+
+      {/* Scoped CSS for responsive recaptcha */}
+      <style jsx>{`
+        @media (max-width: 576px) {
+          div > div.mx-auto {
+            transform: scale(0.65) !important;
+            height: 50px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
